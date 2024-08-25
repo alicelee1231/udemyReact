@@ -1,39 +1,14 @@
-import reactImg from "./assets/react-core-concepts.png";
 import componentsImg from "./assets/components.png";
 import { CORE_CONCEPTS } from "./data";
-
-const reactDescriptions = ["Fundamental", "Crucial", "Core"];
-
-function genRandomInt(max) {
-  return Math.floor(Math.random() * (max + 1));
-}
-
-function Header() {
-  const description = reactDescriptions[genRandomInt(2)];
-
-  return (
-    <header>
-      <img src={reactImg} alt="Stylized atom" />
-      <h1>React Essentials</h1>
-      <p>
-        {description} React concepts you will need for almost any app you are
-        going to build!
-      </p>
-    </header>
-  );
-}
-
-function CoreConcept({ image, title, description }) {
-  return (
-    <li>
-      <img src={image} alt={title} />
-      <h3>{title}</h3>
-      <p>{description}</p>
-    </li>
-  );
-}
+import Header from "./components/Header/Header";
+import CoreConcept from "./components/Coreconcept";
+import TabButton from "./components/TabButton";
 
 function App() {
+  function handelSelect() {
+    console.log("hello world - select");
+  }
+
   return (
     <div>
       <Header />
@@ -48,6 +23,18 @@ function App() {
             />
             <CoreConcept {...CORE_CONCEPTS[1]} />
           </ul>
+        </section>
+        <section id="examples">
+          <h2>Examples</h2>
+          <menu>
+            {/* <TabButton>Components</TabButton> */}
+            {/* <TabButton label="Components" /> */}
+            <TabButton onSelect={handelSelect}>Components</TabButton>
+            <TabButton onSelect={handelSelect}>JSX</TabButton>
+            <TabButton onSelect={handelSelect}>Props</TabButton>
+            <TabButton onSelect={handelSelect}>State</TabButton>
+          </menu>
+          Dynamic content
         </section>
       </main>
     </div>
