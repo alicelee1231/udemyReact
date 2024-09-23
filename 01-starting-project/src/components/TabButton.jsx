@@ -1,7 +1,7 @@
 export default function TabButton({ children, isSelected, ...props }) {
   // export default function TabButton({ label }) {
   return (
-    <li>
+    <li style={{ display: "inline-block" }}>
       <button className={isSelected ? "active" : undefined} {...props}>
         {children}
       </button>
