@@ -1,9 +1,9 @@
 import { useContext } from "react";
-
 import { CartContext } from "../store/shopping-cart-context";
 
 export default function Cart({ onUpdateItemQuantity }) {
-  const { items } = useContext(CartContext);
+  const cartCtx = useContext(CartContext);
+  const items = cartCtx?.items || []; // items가 undefined일 경우 빈 배열 사용
 
   const totalPrice = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
