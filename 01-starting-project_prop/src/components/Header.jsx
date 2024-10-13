@@ -1,5 +1,4 @@
 import { useRef, useContext } from "react";
-
 import CartModal from "./CartModal.jsx";
 import { CartContext } from "../store/shopping-cart-context.jsx";
 
@@ -13,12 +12,14 @@ export default function Header() {
     modal.current.open();
   }
 
-  let modalActions = <button>Close</button>;
+  let modalActions = (
+    <button onClick={() => modal.current.close()}>Close</button>
+  );
 
   if (cartQuantity > 0) {
     modalActions = (
       <>
-        <button>Close</button>
+        <button onClick={() => modal.current.close()}>Close</button>
         <button>Checkout</button>
       </>
     );
